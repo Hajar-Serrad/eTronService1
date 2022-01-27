@@ -1,8 +1,11 @@
 package com.etron.springrestful.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +22,6 @@ public class Inscription {
 	/** Primary key. */
     protected static final String PK = "idInscription";
 
-	
 	@Id
     @Column(unique=true, nullable=false, precision=10)
     private int idInscription;
@@ -33,6 +35,8 @@ public class Inscription {
     private String mdp;
     @Column(nullable=false, length=150)
     private String adresse;
+    @OneToMany(mappedBy="inscription")
+    private Set<Abonnement> abonnement;
     
     /** Default constructor. */
     public Inscription() {
