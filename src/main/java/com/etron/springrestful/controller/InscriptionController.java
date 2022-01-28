@@ -43,12 +43,12 @@ public class InscriptionController {
 	    }
 	  }
 	  
-	/*
+	
 	@GetMapping("/inscriptions/{id}")
 	  public Inscription findInscriptionById(@PathVariable int id) {
-	    return inscriptionService.getInscriptionById(id);
+	    return  inscriptionService.getInscriptionById(id);
 	  }
-	*//*
+	/*
 	@GetMapping("/inscriptions/{email}")
 	  public Inscription findInscriptionByEmail(@PathVariable String email) {
 	    return inscriptionService.getInscriptionByEmail(email);

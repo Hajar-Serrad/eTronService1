@@ -2,6 +2,12 @@ package com.etron.springrestful.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +19,8 @@ import com.etron.springrestful.repository.InscriptionRepository;
 @Service
 public class InscriptionService {
 	
+	private EntityManager entityManager;
+
 	@Autowired
 	private InscriptionRepository inscriptionRepository;
 	
@@ -27,15 +35,24 @@ public class InscriptionService {
 	public List<Inscription> getInscriptions() {
 		return inscriptionRepository.findAll();
 	}
-	/*
+	
 	public Inscription getInscriptionById(int id) {
-		return inscriptionRepository.findById(id).orElse(null);
+		/*CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+	    CriteriaQuery<Inscription> cQuery = builder.createQuery(Inscription.class);
+	    Root<Inscription> root = cQuery.from(Inscription.class);
+	    cQuery
+	      .select(root)
+	      .where(builder.equal(root.get("idinscription"), id));
+	    TypedQuery<Inscription> query = entityManager.createQuery(cQuery);
+	    return query.getResultList();*/
+		return inscriptionRepository.getById(id);
+
 	}
 	
 	public Inscription getInscriptionByEmail(String email) {
 		return inscriptionRepository.findByEmail(email).orElse(null);
 	}
-	*/
+	
 	public String deleteInscription(int id) {
 		inscriptionRepository.deleteById(id);
 		return "inscription removed || " +id;
