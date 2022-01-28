@@ -46,7 +46,7 @@ public class InscriptionController {
 	
 	@GetMapping("/inscriptions/{id}")
 	  public Inscription findInscriptionById(@PathVariable int id) {
-	    return  inscriptionService.getInscriptionById(id);
+	    return inscriptionService.getInscriptionById(id);
 	  }
 	/*
 	@GetMapping("/inscriptions/{email}")

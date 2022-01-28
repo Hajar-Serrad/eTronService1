@@ -37,11 +37,11 @@ public class VehiculeController {
 	  public List<Vehicule> findAllVehicules() {
 	    return vehiculeService.getVehicules();
 	  }
-	/*
+	
 	@GetMapping("/vehicules/{id}")
 	  public Vehicule findVehiculeById(@PathVariable int id) {
 	    return vehiculeService.getVehiculeById(id);
-	  }*/
+	  }
 	/*
 	@GetMapping("/vehicules/{email}")
 	  public Vehicule findVehiculeByEmail(@PathVariable String email) {

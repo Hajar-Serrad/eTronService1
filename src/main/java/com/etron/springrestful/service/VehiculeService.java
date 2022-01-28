@@ -27,10 +27,10 @@ public class VehiculeService {
 	public List<Vehicule> getVehicules() {
 		return vehiculeRepository.findAll();
 	}
-	/*
+	
 	public Vehicule getVehiculeById(int id) {
-		return vehiculeRepository.findById(id).orElse(null);
-	}*/
+		return vehiculeRepository.getById(id);
+	}
 	/*
 	public Vehicule getVehiculeByEmail(String email) {
 		return vehiculeRepository.findByEmail(email).orElse(null);
