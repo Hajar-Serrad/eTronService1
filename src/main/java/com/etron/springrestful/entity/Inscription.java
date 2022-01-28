@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,7 +33,7 @@ public class Inscription {
     private String prenom;
     @Column(nullable=false, length=30)
     private String email;
-    @Column(nullable=false, length=10)
+    @Column(nullable=false, length=250)
     private String mdp;
     @Column(nullable=false, length=150)
     private String adresse;
@@ -140,7 +142,8 @@ public class Inscription {
      * @param aMdp the new value for mdp
      */
     public void setMdp(String aMdp) {
-        mdp = aMdp;
+    	String hashed = BCrypt.hashpw(aMdp, BCrypt.gensalt());
+        mdp = hashed;
     }
 
     /**

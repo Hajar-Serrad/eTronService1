@@ -27,7 +27,7 @@ public class InscriptionService {
 	public List<Inscription> getInscriptions() {
 		return inscriptionRepository.findAll();
 	}
-	
+	/*
 	public Inscription getInscriptionById(int id) {
 		return inscriptionRepository.findById(id).orElse(null);
 	}
@@ -35,7 +35,7 @@ public class InscriptionService {
 	public Inscription getInscriptionByEmail(String email) {
 		return inscriptionRepository.findByEmail(email).orElse(null);
 	}
-	
+	*/
 	public String deleteInscription(int id) {
 		inscriptionRepository.deleteById(id);
 		return "inscription removed || " +id;

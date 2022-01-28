@@ -25,6 +25,7 @@ public class InscriptionController {
 	
 	@PostMapping("/addInscription")
 	  public Inscription addInscription(@RequestBody Inscription inscription) {
+		
 	    return inscriptionService.saveInscription(inscription);
 	  }
 	
@@ -34,26 +35,31 @@ public class InscriptionController {
 	  }
 	
 	@GetMapping("/inscriptions")
-	  public List<Inscription> findAllInscriptions() {
-	    return inscriptionService.getInscriptions();
+	  public ResponseEntity<List<Inscription>>  findAllInscriptions() {
+	    try {
+	    	return new ResponseEntity<>(inscriptionService.getInscriptions(), HttpStatus.OK);
+	    } catch (Exception e) {
+	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
 	  }
-	
+	  
+	/*
 	@GetMapping("/inscriptions/{id}")
 	  public Inscription findInscriptionById(@PathVariable int id) {
 	    return inscriptionService.getInscriptionById(id);
 	  }
-	
+	*//*
 	@GetMapping("/inscriptions/{email}")
 	  public Inscription findInscriptionByEmail(@PathVariable String email) {
 	    return inscriptionService.getInscriptionByEmail(email);
 	  }
-	
+	*/
 	@PostMapping("/updateInscription")
 	  public Inscription updateInscription(@RequestBody Inscription inscription) {
 	    return inscriptionService.updateInscription(inscription);
 	  }
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/deleteInscription/{id}")
 	public String deleteInscription(@PathVariable int id) {
 		return inscriptionService.deleteInscription(id);
 	}
