@@ -30,7 +30,7 @@ public class Formule {
 	private String charge22;
     @Column(nullable=false, length=50)
 	private String charge50;
-    @Column(nullable=false, length=50)
+    @Column(nullable=false,length=50)
 	private String ionity;
     @OneToMany(mappedBy="formule")
     private Set<Abonnement> abonnement;

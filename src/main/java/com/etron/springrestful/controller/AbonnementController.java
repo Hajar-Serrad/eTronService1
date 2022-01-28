@@ -67,9 +67,15 @@ public class AbonnementController {
 	  }
 	
 	@GetMapping("/abonnements/{id}")
-	  public Abonnement findAbonnementById(@PathVariable int id) {
-	    return abonnementService.getAbonnementById(id);
+	  public String findAbonnementById(@PathVariable int id) {
+		if(abonnementService.getAbonnementById(id) != null) {
+			return abonnementService.getAbonnementById(id).toString();
+		}else{
+			return  "Abonnement innexistant";
+		}
+	    
 	  }
+	
 	/*
 	@GetMapping("/Abonnements/{email}")
 	  public Abonnement findAbonnementByEmail(@PathVariable String email) {
@@ -83,7 +89,12 @@ public class AbonnementController {
 	
 	@DeleteMapping("/deleteAbonnement/{id}")
 	public String deleteAbonnement(@PathVariable int id) {
-		return abonnementService.deleteAbonnement(id);
+		if(abonnementService.getAbonnementById(id) != null) {
+			return abonnementService.deleteAbonnement(id);
+		}else{
+			return  "Abonnement innexistant";
+		}
+		
 	}
 	
 

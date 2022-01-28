@@ -49,6 +49,20 @@ public class InscriptionService {
 
 	}
 	
+	public Inscription findByEmailMdp(String mail) {
+		/*CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+	    CriteriaQuery<Inscription> cQuery = builder.createQuery(Inscription.class);
+	    Root<Inscription> root = cQuery.from(Inscription.class);
+	    cQuery
+	      .select(root)
+	      .where(builder.equal(root.get("idinscription"), id));
+	    TypedQuery<Inscription> query = entityManager.createQuery(cQuery);
+	    return query.getResultList();*/
+		//BCrypt.checkpw(candidate, hashed)
+		return inscriptionRepository.getByEmailMdp(mail);
+
+	}
+	
 	public Inscription getInscriptionByEmail(String email) {
 		return inscriptionRepository.findByEmail(email).orElse(null);
 	}
@@ -67,6 +81,14 @@ public class InscriptionService {
 		_inscription.setAdresse(inscription.getAdresse());
 		
 		return inscriptionRepository.save(_inscription);
+
+	}
+	
+	public String updatePassword(int id, String mdp) {
+		Inscription _inscription=inscriptionRepository.getById(id);
+		_inscription.setMdp(mdp);
+		inscriptionRepository.save(_inscription);
+		return "mot de passe modifié avec succès "+_inscription;
 
 	}
 	

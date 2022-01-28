@@ -31,7 +31,7 @@ public class Inscription {
     private String nom;
     @Column(nullable=false, length=50)
     private String prenom;
-    @Column(nullable=false, length=30)
+    @Column(unique=true,nullable=false, length=30)
     private String email;
     @Column(nullable=false, length=250)
     private String mdp;
@@ -55,111 +55,63 @@ public class Inscription {
         this.mdp=mdp;
     }
 
-    /**
-     * Access method for idInscription.
-     *
-     * @return the current value of idInscription
-     */
+
     public int getIdInscription() {
         return idInscription;
     }
 
-    /**
-     * Setter method for idInscription.
-     *
-     * @param aIdInscription the new value for idInscription
-     */
+
     public void setIdInscription(int aIdInscription) {
         idInscription = aIdInscription;
     }
 
-    /**
-     * Access method for nom.
-     *
-     * @return the current value of nom
-     */
+
     public String getNom() {
         return nom;
     }
 
-    /**
-     * Setter method for nom.
-     *
-     * @param aNom the new value for nom
-     */
+
     public void setNom(String aNom) {
         nom = aNom;
     }
 
-    /**
-     * Access method for prenom.
-     *
-     * @return the current value of prenom
-     */
+
     public String getPrenom() {
         return prenom;
     }
 
-    /**
-     * Setter method for prenom.
-     *
-     * @param aPrenom the new value for prenom
-     */
+
     public void setPrenom(String aPrenom) {
         prenom = aPrenom;
     }
 
-    /**
-     * Access method for email.
-     *
-     * @return the current value of email
-     */
+
     public String getEmail() {
         return email;
     }
 
-    /**
-     * Setter method for email.
-     *
-     * @param aEmail the new value for email
-     */
+
     public void setEmail(String aEmail) {
         email = aEmail;
     }
 
-    /**
-     * Access method for mdp.
-     *
-     * @return the current value of mdp
-     */
+
     public String getMdp() {
         return mdp;
     }
 
-    /**
-     * Setter method for mdp.
-     *
-     * @param aMdp the new value for mdp
-     */
+
     public void setMdp(String aMdp) {
     	String hashed = BCrypt.hashpw(aMdp, BCrypt.gensalt());
         mdp = hashed;
     }
 
-    /**
-     * Access method for adresse.
-     *
-     * @return the current value of adresse
-     */
+ 
     public String getAdresse() {
         return adresse;
     }
 
-    /**
-     * Setter method for adresse.
-     *
-     * @param aAdresse the new value for adresse
-     */
+
     public void setAdresse(String aAdresse) {
         adresse = aAdresse;
     }

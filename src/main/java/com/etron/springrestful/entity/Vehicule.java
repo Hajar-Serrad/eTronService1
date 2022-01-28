@@ -69,5 +69,10 @@ public class Vehicule {
 		this.abonnement = abonnement;
 	}
     
-    
+    @Override
+    public String toString() {
+        return String.format("%s(id=%d, Date Achat='%s', point Achat=%s)", 
+                this.getClass().getSimpleName(), 
+                this.getIdVehicule(), this.getDateAchat(), this.getPointAchat());
+    }
 }

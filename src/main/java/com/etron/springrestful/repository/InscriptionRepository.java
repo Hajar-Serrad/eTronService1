@@ -16,5 +16,8 @@ public interface InscriptionRepository extends JpaRepository<Inscription,Integer
 
 	@Query("select i from Inscription i where i.idInscription = :id")
 	Inscription getById(int id);
+	
+	@Query("select i from Inscription i where i.email = :mail")
+	Inscription getByEmailMdp(String mail);
 
 }
