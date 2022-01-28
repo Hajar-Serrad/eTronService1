@@ -39,10 +39,10 @@ public class AbonnementService {
 	public List<Abonnement> getAbonnements() {
 		return abonnementRepository.findAll();
 	}
-	/*
+	
 	public Abonnement getAbonnementById(int id) {
-		return abonnementRepository.findById(id).orElse(null);
-	}*/
+		return abonnementRepository.getById(id);
+	}
 	/*
 	public Abonnement getAbonnementByEmail(String email) {
 		return abonnementRepository.findByEmail(email).orElse(null);
@@ -60,5 +60,9 @@ public class AbonnementService {
 		return abonnementRepository.save(_abonnement);
 
 	}
+
+
+	
+	
 
 }

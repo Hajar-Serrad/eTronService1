@@ -24,9 +24,16 @@ public class InscriptionController {
 	InscriptionService inscriptionService;
 	
 	@PostMapping("/addInscription")
-	  public Inscription addInscription(@RequestBody Inscription inscription) {
-		
-	    return inscriptionService.saveInscription(inscription);
+	  public String addInscription(@RequestBody Inscription inscription) {
+		Inscription _inscription = inscriptionService.getInscriptionById(inscription.getIdInscription());
+		if(_inscription != null) {
+			return  "Id déjà existant";
+		}
+		else {
+			inscriptionService.saveInscription(inscription);
+			return inscription.toString();
+			
+		}
 	  }
 	
 	@PostMapping("/addInscriptions")
@@ -45,18 +52,14 @@ public class InscriptionController {
 	  
 	
 	@GetMapping("/inscriptions/{id}")
-<<<<<<< HEAD
-	  public Inscription findInscriptionById(@PathVariable int id) {
-	    return inscriptionService.getInscriptionById(id);
-=======
-	  public String findInscriptionById(@PathVariable int id) {
+    public String findInscriptionById(@PathVariable int id) {
 		if(inscriptionService.getInscriptionById(id) != null) {
 			return inscriptionService.getInscriptionById(id).toString();
 		}else{
 			return  "Inscription innexistante";
 		}
 	    
->>>>>>> f10cb48a4daf1a9e02815c9ea3a976bb610b4f55
+
 	  }
 	/*
 	@GetMapping("/inscriptions/{email}")

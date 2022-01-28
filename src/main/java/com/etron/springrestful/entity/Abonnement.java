@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,9 +31,12 @@ public class Abonnement {
     private int idAbonnement;
 	@ManyToOne(optional=false)
 	 @JoinColumn(name="idInscription", nullable=false)
+	@JsonIgnore
 	private Inscription inscription;
 	@ManyToOne(optional=false)
 	 @JoinColumn(name="idFormule", nullable=false)
+	@JsonIgnore
+
 	private Formule formule;
 	@Column(nullable=false, length=50)
 	private Date dateDebut;
@@ -39,6 +44,8 @@ public class Abonnement {
 	private Date dateFin;
 	 @ManyToOne(optional=false)
 	 @JoinColumn(name="idVehicule", nullable=false)
+		@JsonIgnore
+
 	private Vehicule vehicule;
 	 
 	 

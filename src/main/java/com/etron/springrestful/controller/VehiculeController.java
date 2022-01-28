@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.etron.springrestful.entity.Inscription;
 import com.etron.springrestful.entity.Vehicule;
 import com.etron.springrestful.service.VehiculeService;
 
@@ -24,8 +25,16 @@ public class VehiculeController {
 	VehiculeService vehiculeService;
 	
 	@PostMapping("/addVehicule")
-	  public Vehicule addVehicule(@RequestBody Vehicule vehicule) {
-	    return vehiculeService.saveVehicule(vehicule);
+	  public String addVehicule(@RequestBody Vehicule vehicule) {
+		Vehicule _vehicule = vehiculeService.getVehiculeById(vehicule.getIdVehicule());
+		if(_vehicule != null) {
+			return  "Id déjà existant";
+		}
+		else {
+			vehiculeService.saveVehicule(vehicule);
+			return vehicule.toString();
+			
+		}
 	  }
 	
 	@PostMapping("/addVehicules")

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.etron.springrestful.entity.Abonnement;
+import com.etron.springrestful.entity.Vehicule;
 import com.etron.springrestful.service.AbonnementService;
 import com.etron.springrestful.service.AbonnementService;
 
@@ -27,8 +28,16 @@ public class AbonnementController {
 	AbonnementService abonnementService;
 	
 	@PostMapping("/addAbonnement")
-	  public Abonnement addAbonnement(@RequestBody Abonnement abonnement) {
-	    return abonnementService.saveAbonnement(abonnement);
+	  public String addAbonnement(@RequestBody Abonnement abonnement) {
+	    Abonnement _abonnement = abonnementService.getAbonnementById(abonnement.getIdAbonnement());
+		if(_abonnement != null) {
+			return  "Id déjà existant";
+		}
+		else {
+			abonnementService.saveAbonnement(abonnement);
+			return abonnement.toString();
+			
+		}
 	  }
 	/*
 	@PostMapping("/effectuerAbonnement")
@@ -50,17 +59,17 @@ public class AbonnementController {
 	 	        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	 	      }
 
-	 	      //return new ResponseEntity<>(abonnementService.getAbonnements(), HttpStatus.OK);
-	 	     return new ResponseEntity<>(HttpStatus.OK);
+	 	      return new ResponseEntity<>(abonnementService.getAbonnements(), HttpStatus.OK);
+	 	     //return new ResponseEntity<>(HttpStatus.OK);
 	 	    } catch (Exception e) {
 	 	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 	 	    }
 	  }
-	/*
-	@GetMapping("/Abonnements/{id}")
+	
+	@GetMapping("/abonnements/{id}")
 	  public Abonnement findAbonnementById(@PathVariable int id) {
 	    return abonnementService.getAbonnementById(id);
-	  }*/
+	  }
 	/*
 	@GetMapping("/Abonnements/{email}")
 	  public Abonnement findAbonnementByEmail(@PathVariable String email) {
