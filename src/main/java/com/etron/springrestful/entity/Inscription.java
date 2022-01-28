@@ -163,5 +163,10 @@ public class Inscription {
     public void setAdresse(String aAdresse) {
         adresse = aAdresse;
     }
-
+    @Override
+    public String toString() {
+        return String.format("%s(id=%d, nom='%s', prenom=%s)", 
+                this.getClass().getSimpleName(), 
+                this.getIdInscription(), this.getNom(), this.getPrenom());
+    }
 }

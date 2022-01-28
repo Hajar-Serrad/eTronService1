@@ -23,15 +23,6 @@ public class FormuleController {
 	@Autowired
 	FormuleService formuleService;
 	
-	@PostMapping("/addFormule")
-	  public Formule addFormule(@RequestBody Formule formule) {
-	    return formuleService.saveFormule(formule);
-	  }
-	
-	@PostMapping("/addFormules")
-	  public List<Formule> addFormules(@RequestBody List<Formule> formules) {
-	    return formuleService.saveFormules(formules);
-	  }
 	
 	@GetMapping("/formules")
 	  public List<Formule> findAllFormules() {
@@ -49,13 +40,13 @@ public class FormuleController {
 	  }
 	*/
 	@PostMapping("/updateFormule")
-	  public Formule updateFormule(@RequestBody Formule formule) {
-	    return formuleService.updateFormule(formule);
+	  public String updateFormule( ) {
+	    return "Formule non modifiable";
 	  }
 	
 	@DeleteMapping("/deleteFormule/{id}")
 	public String deleteFormule(@PathVariable int id) {
-		return formuleService.deleteFormule(id);
+		return "impossible de supprimer une formule";
 	}
 	
 	
