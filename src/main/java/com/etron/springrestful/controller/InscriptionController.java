@@ -45,8 +45,13 @@ public class InscriptionController {
 	  
 	
 	@GetMapping("/inscriptions/{id}")
-	  public Inscription findInscriptionById(@PathVariable int id) {
-	    return  inscriptionService.getInscriptionById(id);
+	  public String findInscriptionById(@PathVariable int id) {
+		if(inscriptionService.getInscriptionById(id) != null) {
+			return inscriptionService.getInscriptionById(id).toString();
+		}else{
+			return  "Inscription innexistante";
+		}
+	    
 	  }
 	/*
 	@GetMapping("/inscriptions/{email}")
